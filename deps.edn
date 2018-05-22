@@ -1,0 +1,16 @@
+{:aliases {:std {:extra-paths ["resources"]}
+           :test {:extra-paths ["test" "test-resources"]
+                  :extra-deps
+                  {circleci/circleci.test {:mvn/version "0.4.1"}
+                   cloverage {:mvn/version "1.0.10"}}
+                  :main-opts ["-m" "cloverage.coverage"
+                              "--runner" "circleci.test"
+                              "--ns-regex" ".*\\.jj.*"
+                              "--ns-exclude-regex" "^clojure\\..*"
+                              "--src-ns-path" "src"
+                              "--test-ns-path" "test"
+                              "--fail-threshold" "95"
+                              "--low-watermark" "96"
+                              "--high-watermark" "99"]}}
+ :deps {org.clojure/clojure {:mvn/version "1.8.0"}
+        cheshire {:mvn/version "5.8.0"}}}
